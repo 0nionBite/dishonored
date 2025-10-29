@@ -1,3 +1,8 @@
+@font-face {
+    font-family: 'lato';
+    src: url(../../assets/Lato-Regular.ttf);
+}
+
 /* Общие стили */
 * {
   margin: 0;
@@ -6,7 +11,7 @@
 }
 
 body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: 'lato';
   background: #0d0d0d;
   color: #f0f0f0;
   line-height: 1.6;

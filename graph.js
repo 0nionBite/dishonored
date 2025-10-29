@@ -1,10 +1,41 @@
 // Данные: персонажи и связи с координатами
 const characters = [
-  { id: "corvo", name: "Corvo Attano", url: "characters/corvo/corvo.html", x: 300, y: 200 },
-  { id: "emily", name: "Emily Kaldwin", url: "characters/emily/emily.html", x: 500, y: 150 },
-  { id: "jessamine", name: "Jessamine Kaldwin", url: "characters/jessamine/jessamine.html", x: 400, y: 300 },
-  { id: "burrows", name: "Hiram Burrows", url: "characters/burrows/burrows.html", x: 150, y: 100 },
-  { id: "daud", name: "Daud", url: "characters/daud/daud.html", x: 200, y: 350 }
+  { 
+    id: "corvo", 
+    name: "Корво Аттано", 
+    url: "src/characters/corvo/corvo.html", 
+    x: 300, y: 70,
+    image: "src/characters/corvo/images/corvo_portrait.jpg" 
+  },
+  { id: "emily", 
+    name: "Эмили Колдуин", 
+    url: "src/characters/emily/emily.html", 
+    x: 500, 
+    y: 150,
+    image: "src/characters/emily/images/Emily.jpg" 
+  },
+  { id: "jessamine", 
+    name: "Джессамина Колдуин", 
+    url: "src/characters/jessamine/jessamine.html", 
+    x: 400, y: 300,
+    image: "src/characters/jessamine/images/Jessamine.jpg" 
+  },
+  { 
+    id: "burrows", 
+    name: "Хайрем Борроуз", 
+    url: "src/characters/burrows/burrows.html", 
+    x: 550, 
+    y: 300,
+    image: "src/characters/burrows/images/Burrows.jpg" 
+   },
+  { 
+    id: "daud", 
+    name: "Дауд", 
+    url: "src/characters/daud/daud.html", 
+    x: 200, 
+    y: 350,
+    image: "src/characters/daud/images/Daud.jpg" 
+  }
 ];
 
 const relationships = [
@@ -21,10 +52,10 @@ const elements = [];
 // Узлы с позициями
 characters.forEach(char => {
   elements.push({
-    data: { id: char.id, label: char.name, url: char.url },
+    data: { id: char.id, label: char.name, url: char.url, image: char.image },
     position: { x: char.x, y: char.y },
     // 🔒 Запрещаем перетаскивание
-    grabbable: true
+    grabbable: false
   });
 });
 
@@ -44,14 +75,15 @@ document.addEventListener('DOMContentLoaded', () => {
       {
         selector: 'node',
         style: {
-          'background-color': '#3498db',
+          'background-image': 'data(image)',
+          'background-fit': 'cover',
           'label': 'data(label)',
           'color': '#fff',
           'text-valign': 'center',
           'text-halign': 'center',
           'width': 60,
           'height': 60,
-          'font-size': 12,
+          'font-size': 6,
           'border-width': 2,
           'border-color': '#2980b9',
           'shape': 'ellipse'
@@ -87,7 +119,7 @@ document.addEventListener('DOMContentLoaded', () => {
       padding: 30
     },
     // 🔒 Глобально отключаем перетаскивание (на всякий случай)
-    userPanningEnabled: false,
+    userPanningEnabled: true,
     userZoomingEnabled: true, // можно оставить масштабирование
     boxSelectionEnabled: false,
     autounselectify: true
